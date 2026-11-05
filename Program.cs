@@ -62,8 +62,8 @@ namespace TaskManager
 
         static int ChoiseMenu()
         {
-            String[] options = { "Add taks", "Cange task status", "Display tasks list", "Delete task", "Exit" };
-            Console.WriteLine("Tasks manager. Chooce option by enter its number:");
+            String[] options = { "Add task", "Change task status", "Display tasks list", "Delete task", "Exit" };
+            Console.WriteLine("Tasks manager. Choose option by enter its number:");
             int index = 1;
             foreach (var option in options)
             {
@@ -97,7 +97,7 @@ namespace TaskManager
             {
                 title = Console.ReadLine();
                 if (String.IsNullOrWhiteSpace(title))
-                    Console.WriteLine("Please nter at least one visible character:");
+                    Console.WriteLine("Please enter at least one visible character:");
             }
             while (String.IsNullOrWhiteSpace(title));
             taskList1.AddTask(title);
@@ -116,13 +116,17 @@ namespace TaskManager
                     (taskList1.TasksList[0].IsCompleted ? "Not Completed" : "Completed")
                     + "? Enter Y/N."
                 );
-                //ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                char answer = char.ToLower(Console.ReadKey(true).KeyChar);
-                if (answer == 'y') taskList1.ChangeTaskStatus(0);
-                else if (answer != 'n')
-                    Console.WriteLine("You don't want to change. It is still " +
-                        (taskList1.TasksList[0].IsCompleted ? "Completed" : "Not Completed"));
-
+                char answer;
+                do
+                {
+                    answer = char.ToLower(Console.ReadKey(true).KeyChar);
+                    if (answer == 'y') taskList1.ChangeTaskStatus(0);
+                    else if (answer == 'n')
+                        Console.WriteLine("You don't want to change. It is still " +
+                            (taskList1.TasksList[0].IsCompleted ? "Completed" : "Not Completed"));
+                    else Console.WriteLine("\"" + answer + "\" is Invalid key! press Y or N.");
+                }
+                while (answer != 'y' && answer != 'n');
             }
             else if (taskList1.Length > 1){
                 Console.WriteLine("Enter the number of the task that you want to change its status:");

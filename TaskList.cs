@@ -34,7 +34,7 @@ namespace TaskManager
         {
             TasksList[index].SetStatus(!TasksList[index].IsCompleted);
             Console.WriteLine(
-                "Statu has been changed to " +
+                "Status has been changed to " +
                 (TasksList[index].IsCompleted ?
                 "Completed." : "Not Completed.")
             );
