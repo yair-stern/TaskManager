@@ -16,8 +16,13 @@ namespace TaskManager
         {
             TasksList.Add(new TaskItem(title, NextId++));
         }
-        public void RemoveTask(int index) {
+        public String RemoveTask(int index)
+        {
+            String taskTitle = TasksList[index].Title;
             TasksList.RemoveAt(index);
+            String message = "\'" + taskTitle + "\' deleted.";
+            Console.WriteLine(message);
+            return message;
         }
         public void PrintList()
         {

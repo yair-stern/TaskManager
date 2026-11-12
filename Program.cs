@@ -33,15 +33,6 @@ namespace TaskManager
                     case 4:
                         {
                             HandleDeleteTask(taskList1);
-                            Console.WriteLine("You want to delete task."
-                                + "\nWhich task?" +
-                                "\nEnter its number");
-                            taskList1.PrintList();
-                            int index = int.Parse(Console.ReadLine()) - 1;
-                            String taskName = taskList1.TasksList[index].Title;
-                            //taskList1.RemoveTask(0);
-                            taskList1.RemoveTask(index);
-                            Console.WriteLine("\'" + taskName + "\' deleted.");
                             break;
                         }
 
@@ -139,7 +130,16 @@ namespace TaskManager
 
         static void HandleDeleteTask(TaskList taskList1)
         {
-
+            Console.WriteLine("You want to delete task."
+                + "\nWhich task?" +
+                "\nEnter its number");
+            taskList1.PrintList();
+            //int index = int.Parse(Console.ReadLine()) - 1;
+            int index = getIndexFromUser(1, taskList1.Length) - 1;
+            //String taskName = taskList1.TasksList[index].Title;
+            //taskList1.RemoveTask(0);
+            taskList1.RemoveTask(index);
+            //Console.WriteLine("\'" + taskName + "\' deleted.");
         }
     }
 }
