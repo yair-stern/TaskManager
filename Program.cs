@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Reflection;
 
 namespace TaskManager
 {
@@ -126,7 +127,8 @@ namespace TaskManager
                 }
                 while (answer != 'y' && answer != 'n');
             }
-            else if (taskList1.Length > 1){
+            else// (taskList1.Length > 1)
+            {
                 Console.WriteLine("Enter the number of the task that you want to change its status:");
                 taskList1.PrintList();
                 int index = GetIndexFromUser(1, taskList1.Length) - 1;
@@ -136,12 +138,33 @@ namespace TaskManager
 
         static void HandleDeleteTask(TaskList taskList1)
         {
-            Console.WriteLine("You want to delete task."
+            if (taskList1.Length == 0)
+                Console.WriteLine("You have no tasks!");
+            else if (taskList1.Length == 1)
+            {
+                Console.WriteLine("You have only one task:");
+                taskList1.PrintList();
+                Console.WriteLine("You want to delete it? Enter Y/N.");
+                char answer;
+                do
+                {
+                    answer = char.ToLower(Console.ReadKey(true).KeyChar);
+                    if (answer == 'y') taskList1.RemoveTask(0);
+                    else if (answer == 'n')
+                        Console.WriteLine("OK. We will not delete it.");
+                    else Console.WriteLine("\"" + answer + "\" is Invalid key! press Y or N.");
+                }
+                while (answer != 'y' && answer != 'n');
+            }
+            else// (taskList1.Length > 1)
+            {
+                Console.WriteLine("You want to delete task."
                 + "\nWhich task?" +
                 "\nEnter its number");
-            taskList1.PrintList();
-            int index = GetIndexFromUser(1, taskList1.Length) - 1;
-            taskList1.RemoveTask(index);
+                taskList1.PrintList();
+                int index = GetIndexFromUser(1, taskList1.Length) - 1;
+                taskList1.RemoveTask(index);
+            }
         }
     }
 }
