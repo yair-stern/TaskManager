@@ -61,15 +61,21 @@ namespace TaskManager
             {
                 Console.WriteLine(index++ + ". " + option + ".");
             }
-            return getIndexFromUser(1, options.Length);
+            return GetIndexFromUser(1, options.Length);
         }
 
-        static int getIndexFromUser(int min, int max)
+        static int GetIndexFromUser(int min, int max)
         {
+            if (min >= max)
+                throw new ArgumentException("min must be smaller than max");
             while (true)
             {
                 if (int.TryParse(Console.ReadLine(), out int input))
                     if (max >= input && input >= min) return input;
+                    else if (max == min + 1)
+                    {
+                        Console.WriteLine($"Enter only {min} or {max}!");
+                    }
                     else
                     {
                         Console.WriteLine("Enter number in " + min + "-" + max + " range!");
@@ -123,7 +129,7 @@ namespace TaskManager
             else if (taskList1.Length > 1){
                 Console.WriteLine("Enter the number of the task that you want to change its status:");
                 taskList1.PrintList();
-                int index = getIndexFromUser(1, taskList1.Length) - 1;
+                int index = GetIndexFromUser(1, taskList1.Length) - 1;
                 taskList1.ChangeTaskStatus(index);
             }
         }
@@ -134,12 +140,8 @@ namespace TaskManager
                 + "\nWhich task?" +
                 "\nEnter its number");
             taskList1.PrintList();
-            //int index = int.Parse(Console.ReadLine()) - 1;
-            int index = getIndexFromUser(1, taskList1.Length) - 1;
-            //String taskName = taskList1.TasksList[index].Title;
-            //taskList1.RemoveTask(0);
+            int index = GetIndexFromUser(1, taskList1.Length) - 1;
             taskList1.RemoveTask(index);
-            //Console.WriteLine("\'" + taskName + "\' deleted.");
         }
     }
 }
