@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using System.Reflection;
 
 namespace TaskManager
@@ -8,12 +7,12 @@ namespace TaskManager
     {
         static void Main(string[] args)
         {
-            bool isContenue = true;
+            bool isContinue = true;
             TaskList taskList1 = new TaskList();
-            while (isContenue)
+            while (isContinue)
             {
-                int userChoise = ChoiseMenu();
-                switch (userChoise)
+                int userChoice = ChooseMenu();
+                switch (userChoice)
                 {
                     case 1:
                         {
@@ -39,20 +38,20 @@ namespace TaskManager
                     case 5:
                         {
                             Console.WriteLine("Have a good day!");
-                            isContenue = false;
+                            isContinue = false;
                             break;
                         }
 
                     default:
                         {
-                            Console.Write("'" + userChoise + "' is not a legal number");
+                            Console.Write("'" + userChoice + "' is not a legal number");
                             break;
                         }
                 }
             }
         }
 
-        static int ChoiseMenu()
+        static int ChooseMenu()
         {
             String[] options = { "Add task", "Change task status", "Display tasks list", "Delete task", "Exit" };
             Console.WriteLine("Tasks manager. Choose option by enter its number:");
@@ -105,10 +104,9 @@ namespace TaskManager
         static void HandleChangeTaskStatus(TaskList taskList1)
         {
             if (taskList1.Length == 0)
-                Console.WriteLine("You have no tasks!");
+                taskList1.PrintList();
             else if (taskList1.Length == 1)
             {
-                Console.WriteLine("You have only one task:");
                 taskList1.PrintList();
                 Console.WriteLine("You want to mark it as " +
                     (taskList1.TasksList[0].IsCompleted ? "Not Completed" : "Completed")
@@ -141,7 +139,6 @@ namespace TaskManager
                 Console.WriteLine("You have no tasks!");
             else if (taskList1.Length == 1)
             {
-                Console.WriteLine("You have only one task:");
                 taskList1.PrintList();
                 Console.WriteLine("You want to delete it? Enter Y/N.");
                 char answer;
