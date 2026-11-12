@@ -23,7 +23,15 @@ dotnet run
 
 Or open `TaskManager.sln` in Visual Studio and press F5.
 
-<!-- TODO: add a screenshot of the console, e.g. ![Screenshot](docs/screenshot.png) -->
+## Screenshots
+
+**Basic flow** – adding tasks, marking one as completed and displaying the list:
+
+![Main flow](docs/main-flow.png)
+
+**Input validation and edge cases** – empty list, invalid input, single-task confirmation:
+
+![Validation](docs/validation.png)
 
 ## Project structure
 

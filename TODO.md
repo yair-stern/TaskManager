@@ -27,4 +27,4 @@
 - [ ] Edit task title
 - [ ] Save/load tasks to a file (JSON)
 - [x] README.md with a description
-- [ ] Screenshot in README (after the cleanup and edge cases are fixed)
+- [X] Screenshot in README (after the cleanup and edge cases are fixed)
