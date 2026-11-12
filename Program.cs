@@ -16,12 +16,12 @@ namespace TaskManager
                 {
                     case 1:
                         {
-                            GetAndAddTask(taskList1);
+                            HandleAddTask(taskList1);
                             break;
                         }
                     case 2:
                         {
-                            ChangeTaskStatus(taskList1);
+                            HandleChangeTaskStatus(taskList1);
                             break;
                         }
                     case 3:
@@ -32,6 +32,7 @@ namespace TaskManager
                         }
                     case 4:
                         {
+                            HandleDeleteTask(taskList1);
                             Console.WriteLine("You want to delete task."
                                 + "\nWhich task?" +
                                 "\nEnter its number");
@@ -89,7 +90,7 @@ namespace TaskManager
             }
         }
 
-        static void GetAndAddTask(TaskList taskList1)
+        static void HandleAddTask(TaskList taskList1)
         {
             Console.WriteLine("Enter your task:");
             String? title;
@@ -104,7 +105,7 @@ namespace TaskManager
             Console.WriteLine("Task Added");
         }
 
-        static void ChangeTaskStatus(TaskList taskList1)
+        static void HandleChangeTaskStatus(TaskList taskList1)
         {
             if (taskList1.Length == 0)
                 Console.WriteLine("You have no tasks!");
@@ -134,6 +135,11 @@ namespace TaskManager
                 int index = getIndexFromUser(1, taskList1.Length) - 1;
                 taskList1.ChangeTaskStatus(index);
             }
+        }
+
+        static void HandleDeleteTask(TaskList taskList1)
+        {
+
         }
     }
 }

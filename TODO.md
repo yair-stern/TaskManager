@@ -1,8 +1,11 @@
 # TODO
 
+## Next up
+- [ ] **Delete**: move the code from `case 4` in `Main` into its own method (like `ChangeTaskStatus`), and handle the items below
+
 ## Bugs
-- [ ] Change status with an empty list: `getIndexFromUser(1, 0)` loops forever
-- [ ] Change status with one task: Y/N answer is never read, and the code falls through to the general prompt
+- [x] Change status with an empty list: `getIndexFromUser(1, 0)` loops forever
+- [x] Change status with one task: Y/N answer is never read, and the code falls through to the general prompt
 - [ ] Delete: `int.Parse` crashes on non-numeric input, so use `getIndexFromUser` instead
 - [ ] Delete: out-of-range number crashes (`ArgumentOutOfRangeException`)
 
@@ -13,7 +16,7 @@
 - [ ] `PrintList` with one task prints no number, but delete asks for "its number"
 
 ## Cleanup
-- [ ] Typos in UI text: "taks", "Cange", "Chooce", "nter", "Statu"
+- [x] Typos in UI text: "taks", "Cange", "Chooce", "nter", "Statu"
 - [ ] Typos in names: `isContenue`, `ChoiseMenu`, `userChoise`
 - [ ] Naming convention: `getIndexFromUser` should be `GetIndexFromUser` (PascalCase for methods)
 - [ ] Remove unused `using System.ComponentModel.Design`
@@ -23,4 +26,5 @@
 ## Ideas
 - [ ] Edit task title
 - [ ] Save/load tasks to a file (JSON)
-- [ ] README.md with a description and a screenshot
+- [x] README.md with a description
+- [ ] Screenshot in README (after the cleanup and edge cases are fixed)
