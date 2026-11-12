@@ -26,14 +26,22 @@ namespace TaskManager
         }
         public void PrintList()
         {
-            if (TasksList.Count == 1)
+            if (TasksList.Count == 0)
+                Console.WriteLine("You have no tasks!");
+            else if (TasksList.Count == 1){
+                Console.WriteLine("You have only one task:");
                 TasksList[0].PrintTask();
+            }
             else
+            {
+                Console.WriteLine("Task List:\n_________________");
                 for (int i = 0; i < TasksList.Count; i++)
                 {
                     Console.Write(i + 1 + ". ");
                     TasksList[i].PrintTask();
                 }
+            }
+                
         }
         public void ChangeTaskStatus(int index)
         {

@@ -27,7 +27,6 @@ namespace TaskManager
                         }
                     case 3:
                         {
-                            Console.WriteLine("Task List:\n_________________");
                             taskList1.PrintList();
                             break;
                         }
